@@ -1,0 +1,41 @@
+#
+# Cygwin gcc
+#
+
+TARGET = net_sf_colorer.dll
+all: $(TARGET)
+
+shared_path=../../colorer/src/shared/
+JAVA_INCLUDE=$(subst \,/,$(JAVA_HOME))/include
+JAVA_INCLUDE_MD=$(JAVA_INCLUDE)/win32
+
+CYGWIN=-mno-cygwin -mrtd
+CPPFLAGS_CUSTOM += -DCOLORER_FEATURE_USE_DL_MALLOC=FALSE -DCOLORER_FEATURE_USE_CHUNK_ALLOC=FALSE
+
+obj_output=objs
+
+include $(shared_path)makefile.colorer.cygwin
+include makefile.core
+
+DLLMAIN=_DllMain@12
+
+LIBINC = -lwininet -lstdc++
+LIBFLAGS = -nostartfiles -shared -Wl,-e,$(DLLMAIN),-Map=net_sf_colorer.map $(FLAGS)
+#LIBFLAGS += -s
+#CPPFLAGS += -ggdb
+
+$(obj_output_slash)net_sf_colorer.$(obj):
+	$(CPP) -D__int64='long long'  -Wp,-I$(shared_path),-I$(unzipdir),-I$(JAVA_INCLUDE),-I$(JAVA_INCLUDE_MD),-w $(CPPFLAGS) -s -O3 -c net_sf_colorer.cpp
+
+$(TARGET): *.cpp *.h $(objs)
+	$(LINK) $(LIBFLAGS) -o temp.exe -Wl,--base-file,net_sf_colorer.dll.base $(objs) $(LIBINC)
+	$(DLLTOOL) -k -A -z net_sf_colorer.def  $(objs)
+	$(DLLTOOL) --dllname net_sf_colorer.dll --base-file net_sf_colorer.dll.base --output-exp net_sf_colorer.dll.exp --def net_sf_colorer.def
+	$(LINK) $(LIBFLAGS) -o $@ $(objs) net_sf_colorer.dll.exp $(LIBINC)
+	$(RM) net_sf_colorer.dll.base
+	$(RM) net_sf_colorer.dll.exp
+	$(RM) net_sf_colorer.def
+	$(RM) temp.exe
+
+clean:
+	$(RM) $(objs) $(TARGET) net_sf_colorer.map

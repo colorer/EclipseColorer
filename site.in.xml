@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description url="http://colorer.sf.net/eclipsecolorer/">
+      Eclipse Colorer plugin information
+   </description>
+   <feature url="features/net.sf.colorer_@eclipseplugin-version@.jar" id="net.sf.colorer" version="@eclipseplugin-version@">
+      <category name="syntax"/>
+   </feature>
+   <category-def name="syntax" label="Syntax Highlighting">
+      <description>
+         Syntax Highlighting and coding helper
+      </description>
+   </category-def>
+</site>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<welcomePage 
+    title="Eclipse Colorer Plugin"
+    format = "wrap">
+
+<intro>Thank you for installing Eclipse Colorer plugin.</intro>
+
+<item><b>Main Features </b>
+Eclipse Colorer plugin uses Colorer-take5 library to introduce
+syntax highlighting support in great number of languages.
+</item>
+
+<item><b>Flexible settings and configuration</b>
+<p>You can open Window > Preferences > Eclipse Colorer Library and change any of the
+default settings. You can choose preferable color schema, pair highlighting style,
+some editor options and so on...
+.</p></item>
+
+<item><b>HTML Generator</b>
+You can use HTML Generator to generate html-ized versions of your source files,
+suitable for publishing or printing. Select required files in resouce view,
+press right mouse button and choose HTML Generator > Generate.
+</item>
+
+<item><b>More information about Colorer Library</b>
+Visit http://colorer.sf.net/ and learn more about entrie Colorer Library.
+There you can check for new versions, read some additional docs, make a donation
+for Colorer.</item>
+
+</welcomePage>

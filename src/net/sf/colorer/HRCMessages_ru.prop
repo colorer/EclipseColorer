@@ -1,0 +1,22 @@
+#Language group names mapping
+main=Базовые языки
+inet=Интернет
+database=Базы данных
+xml=Стандарты XML
+scripts=Скрипты и конфигурация
+scripts.ini=Скрипты INI
+scripts.colorer=Скрипты для Colorer
+scripts.install=Системы установки
+scripts.far=Плагины к ФАРу
+scripts.rare=Редкие и неиспользуемые скрипты
+scripts.quorum=Скрипты Quorum
+messages=Скрипты текстовых сообщений
+messages.far=Скрипты текстовых сообщений для FAR
+rare=Редкие языки
+rare.j2ee=J2EE
+rare.inet=Редкое в интернет
+rare.scripts=Редкие скрипты
+rare.database=Базы данных
+rare.quorum=Quorum
+rare.ie=Infinity Engine
+other=Другое

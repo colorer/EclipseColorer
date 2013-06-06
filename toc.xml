@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<toc label="Colorer Library">
+  <topic label="Library documentation" href="colorer/doc/index.html">
+    <topic label="Whats new" href="colorer/doc/whatsnew/beta1.html"/>
+    <topic label="Eclipse plugin" href="colorer/doc/eclipseplugin.html"/>
+    <topic label="FAR Manager plugin" href="colorer/doc/farplugin.html"/>
+    <topic label="Console tools" href="colorer/doc/consoletools.html"/>
+    <topic label="XML Schema linking" href="colorer/doc/xsd2hrc.html"/>
+  </topic>
+  <topic label="HRC Language Reference" href="colorer/doc/hrc-ref/index.html"/>
+  <topic label="Colorer C++ API" href="colorer/doc/api/modules.html">
+    <topic label="Class Hierarchy" href="colorer/doc/api/hierarchy.html"/>
+    <topic label="Class list" href="colorer/doc/api/annotated.html"/>
+    <topic label="Class index" href="colorer/doc/api/classes.html"/>
+    <topic label="Related pages" href="colorer/doc/api/pages.html">
+      <topic label="Code sample" href="colorer/doc/api/samples.html"/>
+      <topic label="catalog.xml locations" href="colorer/doc/api/catalogloc.html"/>
+      <topic label="Acknowledgements" href="colorer/doc/api/acknowledgements.html"/>
+      <topic label="Deprecated" href="colorer/doc/api/deprecated.html"/>
+      <topic label="TODO" href="colorer/doc/api/todo.html"/>
+    </topic>
+  </topic>
+  <topic label="Colorer Java API" href="colorer/doc/java/index.html">
+  </topic>
+
+</toc>

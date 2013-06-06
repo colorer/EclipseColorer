@@ -1,0 +1,125 @@
+init.error.title = Ошибка инициализации библиотеки Colorer-take5
+init.error.pf = Ошибка в инициализации native-части библиотеки Colorer. \
+                Причиной этого может быть отсутствующий или не найденный в \
+                путях загрузки файл net_sf_colorer.dll (libnet_sf_colorer.so). \
+                Или же, Colorer не может найти файл-каталог 'catalog.xml', \
+                необходимый для его работы, который должен находится \
+                в '%PLUGIN_DIR%/colorer/catalog.xml'
+                
+
+prefs.title=Настройки текстового редактора Colorer-take5
+prefs.filetypes.title=Типы файлов в Colorer-take5
+
+TextEditorsRef=Смотрите так же <A>'Text Editors'</A> для общих настроек текстового редактора.
+
+TEXT_FONT=&Шрифт, используемый в редакторе
+SPACES_FOR_TABS=Использовать &пробелы вместо табуляции.
+TAB_WIDTH=&Размер табуляции
+WORD_WRAP=Использовать &мягкий перенос слов в редакторе
+WordWrapPatch=Исправлять некоторые ошибки при мягком переносе
+FULL_BACK=Заполнять строки &фоном полностью во вложенных языках
+HORZ_CROSS=Подсвечивать текущую &горизонтальную позицию
+VERT_CROSS=Подсвечивать текущую &вертикальную позицию -- отключено
+PROJECTION=Включить свертывание блоков в редакторе
+
+PAIRS_MATCH=Парные &конструкции:
+PAIRS_NO=Не показывать парные конструкции
+PAIRS_XOR=Показывать пары подсветкой фона
+PAIRS_OUTLINE=Показывать пары рамкой
+PAIRS_OUTLINE2=Показывать пары жирной рамкой
+
+HRD_SET=&Используемая цветовая схема:
+USE_BACK=Использовать &цвет фона из указанной схемы
+BACK_SCALE=Уровень затенения фона в рекурсивных конструкциях
+
+ftpp.Parameter=Параметр
+ftpp.Value=Значение
+ftpp.hrd_set=Использовать цветовую схему
+ftpp.default=<Общее>
+ftpp.word_wrap=Использовать мягкий перенос слов в редакторе
+ftpp.true=Включено
+ftpp.false=Выключено
+
+pair.find=&Найти пару@Alt+[
+pair.find.tooltip=Найти парную конструкцию для текущей под курсором (Alt+[)
+pair.select=&Выделить пару@Alt+]
+pair.select.tooltip=Выделить текст между текущей парой подсвеченных элементов (Alt+])
+pair.selectcontent=Выделить &содержимое@Alt+}
+pair.selectcontent.tooltip=Выделить текст внутри текущей пары элементов (Alt+})
+
+editor.pairerr.title=Парные конструкции
+editor.pairerr.msg=Невозможно найти запрошенную пару. Возможно структура текста некорректна, либо пара не выделена.
+
+editor.hrcupdate=Перезагрузить настройки
+editor.hrcupdate.tooltip=Загрузить заново все настройки библиотеки, перечитать все измененные файлы.
+editor.filetype=Выбрать язык программирования
+editor.filetype.tooltip=Выбор текущего используемого языка программирования из списка всех доступных.
+
+outline.tree=Иерархическое представление
+outline.tree.tooltip=Иерархическое представление
+outline.sort=Сортировка
+outline.sort.tooltip=Сортировка
+outline.options=Меню
+outline.options.tooltip=Меню
+outline.options.Structure=Структура
+outline.options.Errors=Ошибки
+outline.options.ParseTree=Дерево разбора
+outline.link=Связывать выделение с позицией в текущем редакторе
+
+regions-tree.link=Связать выделение с регионом под курсором в текущем редакторе
+regions-tree.loadall=Загрузить все описания HRC и полное дерево регионов
+regions-tree.refresh=Обновить дерево регионов до текущего состояния базы HRC
+
+htmlgen.done=Генерация HTML завершена
+htmlgen.fault=Сбой во время генерации HTML
+
+htmlgen.done.msg=Генерация завершена.\u000A{0} файл(ов) сгенерировано в каталоге {1}:\u000A\u000A{2}
+htmlgen.fault.msg=Сбой в процессе генерации.\u000A{0} файл(ов) сгенерировано в каталоге {1}:\u000A\u000A{2}\u000A Сбой на файле: {3}
+
+WordWrapAction=Мягкий перенос
+
+Editor.RulerPreferencesAction.label=Настройки
+Editor.RulerPreferencesAction.tooltip=Открыть настройки для этого типа файлов
+
+Projection.Folding.label=Свертывание
+
+Projection.Toggle.label= Свертывание активно
+Projection.Toggle.tooltip=Активировать/отключить свертывание
+Projection.Toggle.description= Toggles folding for the current editor
+Projection.Toggle.image=
+
+Projection.ExpandAll.label= Развернуть все
+Projection.ExpandAll.tooltip= Expands All Collapsed Regions
+Projection.ExpandAll.description= Expands any collapsed regions in the current editor
+Projection.ExpandAll.image=
+
+Projection.Expand.label= E&xpand
+Projection.Expand.tooltip= Expands the Current Collapsed Region
+Projection.Expand.description= Expands the collapsed region at the current selection
+Projection.Expand.image=
+
+Projection.CollapseAll.label= Свернуть все
+Projection.CollapseAll.tooltip= Collapses All Expanded Regions
+Projection.CollapseAll.description= Collapse any expanded regions in the current editor
+Projection.CollapseAll.image=
+
+Projection.Collapse.label= Colla&pse
+Projection.Collapse.tooltip= Collapses the Current Region
+Projection.Collapse.description= Collapses the Current Region
+Projection.Collapse.image=
+
+Projection.Restore.label= &Reset Structure
+Projection.Restore.tooltip= Restore the Original Folding Structure
+Projection.Restore.description= Restores the original folding structure
+Projection.Restore.image=
+
+Projection.CollapseComments.label= Collapse &Comments
+Projection.CollapseComments.tooltip= Collapses All Comments
+Projection.CollapseComments.description= Collapses all comments
+Projection.CollapseComments.image=
+
+Projection.CollapseMembers.label= Collapse &Members
+Projection.CollapseMembers.tooltip= Collapses All Members
+Projection.CollapseMembers.description= Collapses all members
+Projection.CollapseMembers.image=
+

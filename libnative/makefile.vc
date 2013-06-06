@@ -1,0 +1,76 @@
+#
+# ms vc
+#
+CPP  = @cl
+LINK = @link
+RM   = @del
+obj  = obj
+MKDIR= mkdir
+
+!ifndef DEBUG
+obj_output=release
+!else
+obj_output=debug
+!endif 
+
+!ifndef WIN64
+obj_output=$(obj_output).32
+!else
+obj_output=$(obj_output).64
+!endif 
+
+TARGET = net_sf_colorer.dll
+all: $(TARGET)
+
+!ifndef DEBUG
+CPPFLAGS_CUSTOM=/D "NDEBUG" /D "COLORER_FEATURE_LOGLEVEL=COLORER_FEATURE_LOGLEVEL_QUIET"
+CPPFLAGS =/O2 /Oi /Ot /GL /Gm- /EHsc /GS /Gy  /FD /MT
+LIBFLAGS=/INCREMENTAL:NO  /OPT:REF /OPT:ICF /LTCG 
+!else
+CPPFLAGS_CUSTOM=/D "_DEBUG" /D "COLORER_FEATURE_LOGLEVEL=COLORER_FEATURE_LOGLEVEL_FULL"
+CPPFLAGS =/Od /Gm /EHsc /RTC1 /MTd /ZI
+LIBFLAGS=/DEBUG /PDB:"$(obj_output)/net_sf_colorer.pdb" 
+!endif  
+
+!ifndef WIN64
+CPPFLAGS_CUSTOM=$(CPPFLAGS_CUSTOM) /D "WIN32"
+LIBFLAGS=$(LIBFLAGS) /MACHINE:X86
+!else
+CPPFLAGS_CUSTOM=$(CPPFLAGS_CUSTOM) /D "_WIN64" 
+LIBFLAGS=$(LIBFLAGS) /MACHINE:x64
+!endif 
+
+shared_path=../../colorer/src/shared/
+JAVA_INCLUDE=$(JAVA_HOME)/include/
+JAVA_INCLUDE_MD=$(JAVA_INCLUDE)win32/
+
+obj_output_slash = $(obj_output)\\
+
+CPPFLAGS_CUSTOM = $(CPPFLAGS_CUSTOM) /D "COLORER_FEATURE_USE_DL_MALLOC=FALSE" /D "COLORER_FEATURE_USE_CHUNK_ALLOC=FALSE" /D "USE_DL_PREFIX" 
+CPPFLAGS_CUSTOM = $(CPPFLAGS_CUSTOM) /Fo"$(obj_output)\\" /D "_USRDLL"  /D "_CRT_SECURE_NO_DEPRECATE" /D "_WINDLL" /D "_UNICODE" /D "UNICODE"
+CPPFLAGS = $(CPPFLAGS) /I $(shared_path) /I $(unzipdir)  /wd4996 /W3 /nologo /c  $(CPPFLAGS_CUSTOM)
+LIB_DEBUG =  /incremental:no /NODEFAULTLIB:libc libcmt.lib
+
+include makefile.core
+
+# ms nmake faults to substitute $(shared_path) here :(
+include ../../colorer/src/shared/makefile.zlib
+include ../../colorer/src/shared/_dependencies.dep
+include ../../colorer/src/shared/makefile.objs
+include ../../colorer/src/shared/makefile.lines
+
+LIBFLAGS = $(objs) $(LIBFLAGS) /MAP /DLL /DYNAMICBASE:NO wininet.lib /nologo
+
+$(obj_output_slash)net_sf_colorer.$(obj):
+	$(CPP) $(CPPFLAGS) -I"$(JAVA_INCLUDE)" -I"$(JAVA_INCLUDE_MD)" net_sf_colorer.cpp
+
+$(TARGET): $(obj_output) $(objs)
+	$(LINK) $(LIBFLAGS)
+
+clean:
+	echo cleaning
+	for %%i in ("$(obj_output)\*.*" "*.idb" $(TARGET) net_sf_colorer.exp net_sf_colorer.lib ) do @if exist %%i del /q /f %%i
+	rd /q $(obj_output)
+
+.cpp.obj:
+	$(CPP) $<

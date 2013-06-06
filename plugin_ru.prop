@@ -1,0 +1,24 @@
+
+
+ColorerEditor=Редактор Colorer
+ColorerEditor.cpp=C++ Редактор Colorer
+ColorerEditor.scripts=Редактор Скриптов Colorer
+ColorerEditor.xml=XML Редактор Colorer 
+
+commands.category.name=Colorer Library Editor
+commands.category.description=Colorer Library
+commands=
+
+PreferenceTitle=Библиотека Colorer
+FileTypePreferenceTitle=Типы файлов
+
+
+HTMLGenerator=Генератор HTML
+GenerateHTML=Сгеренировать HTML
+
+colorerPresentation.label=EclipseColorer
+colorerEditorFontDefiniton.label=Шрифт текста в редакторе Colorer
+colorerEditorFontDefintion.description=Шрифт текста, который будет использован в редакторе Colorer
+
+preferenceKeywords.PreferencePage=color colorer word wrap HRC HRD style line pair match
+preferenceKeywords.FileTypePreferencePage=color colorer word wrap HRC HRD style line pair match file type syntax parameters

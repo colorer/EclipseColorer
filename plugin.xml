@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+<!-- Editors with Syntax Highlighting definitions -->
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="%ColorerEditor"
+            icon="icons/colorer_editor.gif"
+            extensions="adb,adc,ads,as,asm,bas,dsl,f,inc,idl,js,java,sqlj,lisp,lsp,ltx,m,m3,p,pas,patch,pl,pls,pm,prg,ps,py,rb,pyw,rex,sh,sml,spec,scala,sql,tcl,tex,texi,tsh,vbs"
+            contributorClass="net.sf.colorer.eclipse.editors.ColorerActionContributor"
+            class="net.sf.colorer.eclipse.editors.ColorerEditor"
+            id="net.sf.colorer.eclipse.editors.ColorerEditor">
+      </editor>
+      <editor
+            name="%ColorerEditor.cpp"
+            icon="icons/cpp.gif"
+            extensions="c,cc,cpp,cs,csh,cxx,h,hh,hpp,hs"
+            contributorClass="net.sf.colorer.eclipse.editors.ColorerActionContributor"
+            class="net.sf.colorer.eclipse.editors.ColorerEditor"
+            id="net.sf.colorer.eclipse.editors.ColorerEditor.Cpp">
+      </editor>
+      <editor
+            name="%ColorerEditor.scripts"
+            default="true"
+            icon="icons/scripts.gif"
+            extensions="awk,bat,bbj,dbm,diff,dpk,dpr,ini,patch,pls,pm,prg,pro,project,properties,prop,pro,props,reg,sources,txt,xom,mak,makefile"
+            contributorClass="net.sf.colorer.eclipse.editors.ColorerActionContributor"
+            class="net.sf.colorer.eclipse.editors.ColorerEditor"
+            id="net.sf.colorer.eclipse.editors.ColorerEditor.Scripts">
+      </editor>
+      <editor
+            name="%ColorerEditor.xml"
+            default="true"
+            icon="icons/xml.gif"
+            extensions="xml,xsd,xsl,dtd,hrc,hrd,html,htm,xhtml,rhtml,erb,yml,haml,sass,css,asp,aspx,jsp,fo,svg,dbk,docbook,jhtml,jspf,php,php3,php4,phtml,sgm,sgml,shtm,shtml"
+            contributorClass="net.sf.colorer.eclipse.editors.ColorerActionContributor"
+            class="net.sf.colorer.eclipse.editors.ColorerEditor"
+            id="net.sf.colorer.eclipse.editors.ColorerEditor.XML">
+      </editor>
+   </extension>
+   <!-- Comparsion contributors -->
+   <extension
+         point="org.eclipse.compare.contentViewers">
+      <viewer
+            extensions="adb,adc,ads,as,asm,bas,dsl,f,inc,idl,js,java,sqlj,lisp,lsp,ltx,m,m3,p,pas,patch,pl,pls,pm,prg,ps,py,pyw,rex,sh,sml,spec,sql,tcl,tex,texi,tsh,vbs,c,cc,cpp,cs,csh,css,cxx,h,hh,hpp,hs,awk,bat,bbj,dbm,diff,dpk,dpr,ini,patch,pls,pm,prg,pro,project,properties,prop,pro,props,reg,sources,txt,xom,mak,makefile,xml,xsd,xsl,dtd,hrc,hrd,html,htm,xhtml,asp,aspx,jsp,fo,svg,dbk,docbook,jhtml,jspf,php,php3,php4,phtml,sgm,sgml,shtm,shtml"
+            class="net.sf.colorer.eclipse.compare.CompareViewerCreator"
+            id="net.sf.colorer.eclipse.compare.CompareViewerCreator">
+      </viewer>
+      <contentTypeBinding
+			contentTypeId="org.eclipse.core.runtime.text"
+            contentViewerId="net.sf.colorer.eclipse.compare.CompareViewerCreator">
+	  </contentTypeBinding>
+      <contentTypeBinding
+			contentTypeId="org.eclipse.core.runtime.xml"
+            contentViewerId="net.sf.colorer.eclipse.compare.CompareViewerCreator">
+	  </contentTypeBinding>
+      
+   </extension>
+
+   <extension
+         point="org.eclipse.compare.contentMergeViewers">
+      <viewer
+            extensions="adb,adc,ads,as,asm,bas,dsl,f,inc,idl,js,java,sqlj,lisp,lsp,ltx,m,m3,p,pas,patch,pl,pls,pm,prg,ps,py,pyw,rex,sh,sml,spec,sql,tcl,tex,texi,tsh,vbs,c,cc,cpp,cs,csh,css,cxx,h,hh,hpp,hs,awk,bat,bbj,dbm,diff,dpk,dpr,ini,patch,pls,pm,prg,pro,project,properties,prop,pro,props,reg,sources,txt,xom,mak,makefile,xml,xsd,xsl,dtd,hrc,hrd,html,htm,xhtml,asp,aspx,jsp,fo,svg,dbk,docbook,jhtml,jspf,php,php3,php4,phtml,sgm,sgml,shtm,shtml"
+            class="net.sf.colorer.eclipse.compare.CompareMergeViewerCreator"
+            id="net.sf.colorer.eclipse.compare.CompareMergeViewerCreator">
+
+      </viewer>
+      <contentTypeBinding
+			contentTypeId="org.eclipse.core.runtime.text"
+            contentMergeViewerId="net.sf.colorer.eclipse.compare.CompareMergeViewerCreator">
+	  </contentTypeBinding>
+      <contentTypeBinding
+			contentTypeId="org.eclipse.core.runtime.xml"
+            contentMergeViewerId="net.sf.colorer.eclipse.compare.CompareMergeViewerCreator">
+	  </contentTypeBinding>
+   </extension>
+
+   <!-- Preferences pages -->
+
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="%PreferenceTitle"
+            class="net.sf.colorer.eclipse.PreferencePage"
+            id="net.sf.colorer.eclipse.PreferencePage">
+            <keywordReference id="net.sf.colorer.eclipse.PreferencePage"/>
+      </page>
+      <page
+            name="%FileTypePreferenceTitle"
+            category="net.sf.colorer.eclipse.PreferencePage"
+            class="net.sf.colorer.eclipse.ftpp.FileTypePreferencePage"
+            id="net.sf.colorer.eclipse.ftpp.FileTypePreferencePage">
+            <keywordReference id="net.sf.colorer.eclipse.ftpp.FileTypePreferencePage"/>
+      </page>
+   </extension>
+   <extension
+      point="org.eclipse.ui.keywords">
+      <keyword
+            label="%preferenceKeywords.PreferencePage"
+            id="net.sf.colorer.eclipse.PreferencePage"/>
+      <keyword
+            label="%preferenceKeywords.FileTypePreferencePage"
+            id="net.sf.colorer.eclipse.ftpp.FileTypePreferencePage"/>
+   </extension>
+   
+
+   <!-- HRC Regions tree list View -->
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Eclipse Colorer"
+            id="colorer">
+      </category>
+      <view
+            name="HRC Regions Tree"
+            icon="icons/regions-tree-view.gif"
+            category="colorer"
+            class="net.sf.colorer.eclipse.view.HRCRegionsTreeView"
+            id="net.sf.colorer.eclipse.view.HRCRegionsTreeView">
+      </view>
+   </extension>
+
+<!-- Editor Commands  -->
+<!--   NOTE:
+M1 = CTRL/COMMAND
+M2 = SHIFT
+M3 = ALT
+M4 = Platform-specific fourth key -->
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="%commands.category.name"
+            description="%commands.category.description"
+            id="net.sf.colorer.eclipse.category">
+      </category>
+      <command
+            categoryId="net.sf.colorer.eclipse.category"
+            name="Reload HRC base"
+            description="%commands"
+            id="net.sf.colorer.eclipse.editors.hrcupdate">
+      </command>
+      <command
+            categoryId="net.sf.colorer.eclipse.category"
+            name="Choose language"
+            description="%commands"
+            id="net.sf.colorer.eclipse.editors.choosetype">
+      </command>
+      <command
+            categoryId="net.sf.colorer.eclipse.category"
+            name="Match Paired Structure"
+            description="%commands"
+            id="net.sf.colorer.eclipse.editors.PairMatchAction">
+      </command>
+      <command
+            categoryId="net.sf.colorer.eclipse.category"
+            name="Select Pair"
+            description="%commands"
+            id="net.sf.colorer.eclipse.editors.pairselect">
+      </command>
+      <command
+            categoryId="net.sf.colorer.eclipse.category"
+            name="Select Pair&apos;s Content"
+            description="%commands"
+            id="net.sf.colorer.eclipse.editors.pairselectcontent">
+      </command>
+      <command
+            categoryId="net.sf.colorer.eclipse.category"
+            name="Select Color Region"
+            description="%commands"
+            id="net.sf.colorer.eclipse.editors.selectregion">
+      </command>
+      <command
+            categoryId="net.sf.colorer.eclipse.category"
+            name="Toggle word wrap"
+            description="%commands"
+            id="net.sf.colorer.eclipse.editors.WordWrapAction">
+      </command>
+      <command
+            name="Collapse Comments"
+            description="%commands"
+            categoryId="org.eclipse.ui.category.textEditor"
+            id="net.sf.colorer.eclipse.editors.folding.collapseComments">
+      </command>
+   </extension>
+
+   <extension point="org.eclipse.ui.contexts">
+       <context
+          name="EclipseColorer editors"
+          description="EclipseColorer editors"
+          parentId="org.eclipse.ui.textEditorScope"
+          id="net.sf.colorer.eclipse.ColorerScope">
+       </context>
+   </extension>
+
+   <extension point="org.eclipse.ui.bindings">
+      <key
+          sequence="M1+R"
+          contextId="net.sf.colorer.eclipse.ColorerScope"
+          commandId="net.sf.colorer.eclipse.editors.hrcupdate"
+          schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+<!--
+      <key
+          sequence=""
+          contextId="net.sf.colorer.eclipse.ColorerScope"
+          commandId="net.sf.colorer.eclipse.editors.choosetype"
+          schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+-->
+      <key
+          sequence="M3+["
+          contextId="net.sf.colorer.eclipse.ColorerScope"
+          commandId="net.sf.colorer.eclipse.editors.PairMatchAction"
+          schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+      <key
+          sequence="M3+]"
+          contextId="net.sf.colorer.eclipse.ColorerScope"
+          commandId="net.sf.colorer.eclipse.editors.pairselect"
+          schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+      <key
+          sequence="M3+}"
+          contextId="net.sf.colorer.eclipse.ColorerScope"
+          commandId="net.sf.colorer.eclipse.editors.pairselectcontent"
+          schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+      <key
+          sequence="M3+&apos;"
+          contextId="net.sf.colorer.eclipse.ColorerScope"
+          commandId="net.sf.colorer.eclipse.editors.selectregion"
+          schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+
+   </extension>
+
+<!-- Context menu for Navigator and Package-Explorer -->
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IResource"
+            adaptable="true"
+            id="net.sf.colorer.eclipse.HTMLGenerator.popup">
+         <menu
+               label="%HTMLGenerator"
+               path="additions"
+               id="net.sf.colorer.eclipse.HTMLGenerator.menu">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="%GenerateHTML"
+               class="net.sf.colorer.eclipse.HTMLGeneratorAction"
+               menubarPath="net.sf.colorer.eclipse.HTMLGenerator.menu/group1"
+               id="net.sf.colorer.eclipse.HTMLGeneratorAction">
+         </action>
+      </objectContribution>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.themes">
+        <themeElementCategory label="%colorerPresentation.label" id="net.sf.colorer.eclipse.presentation"/>
+      <fontDefinition
+            label="%colorerEditorFontDefiniton.label"
+            defaultsTo="org.eclipse.jface.textfont"
+            categoryId="net.sf.colorer.eclipse.presentation"
+            id="net.sf.colorer.eclipse.presentation.textfont">
+         <description>
+            %colorerEditorFontDefintion.description
+         </description>
+      </fontDefinition>
+   </extension>
+
+<!-- Eclipse Help Topic
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml"
+            primary="true">
+      </toc>
+   </extension>
+-->
+
+</plugin>

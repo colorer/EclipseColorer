@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="net.sf.colorer" default="javadoc">
+    
+    <property name='doc.dir' value='doc/java'/>
+    <property name='eclipse.plugins' value='${eclipse.dir}/plugins'/>
+
+    <target name="javadoc">
+      <javadoc destdir="${doc.dir}"
+            access="protected" use="false" notree="false"
+            nonavbar="false" noindex="false" splitindex="false"
+            author="true" version="true" nodeprecatedlist="false"
+            nodeprecated="false"
+            packagenames="net.sf.colorer.swing,net.sf.colorer.editor,net.sf.colorer.swt,net.sf.colorer,net.sf.colorer.viewer,net.sf.colorer.eclipse.editors,net.sf.colorer.eclipse.outline,net.sf.colorer.eclipse,net.sf.colorer.handlers,net.sf.colorer.impl"
+            sourcepath='src'
+            classpath="bin;${eclipse.plugins}\org.eclipse.core.resources_2.1.0\resources.jar;${eclipse.plugins}\org.eclipse.ui_2.1.0\ui.jar;${eclipse.plugins}\org.eclipse.swt.win32_2.1.0\ws\win32\swt.jar;${eclipse.plugins}\org.eclipse.text_2.1.0\text.jar;${eclipse.plugins}\org.eclipse.jface_2.1.0\jface.jar;${eclipse.plugins}\org.eclipse.jface.text_2.1.0\jfacetext.jar;${eclipse.plugins}\org.eclipse.ui.views_2.1.0\views.jar;${eclipse.plugins}\org.eclipse.ui.workbench_2.1.0\workbench.jar;${eclipse.plugins}\org.eclipse.ui.win32_2.1.0\workbenchwin32.jar;${eclipse.plugins}\org.eclipse.ui.workbench.texteditor_2.1.0\texteditor.jar;${eclipse.plugins}\org.eclipse.ui.editors_2.1.0\editors.jar;${eclipse.plugins}\org.eclipse.core.boot_2.1.0\boot.jar;${eclipse.plugins}\org.eclipse.core.runtime_2.1.0\runtime.jar"
+            overview="src\overview.html"
+            doctitle="Colorer-take5 Library Java API">
+        <bottom><![CDATA[<i>Copyright &#169; 2003 Cail Lomecb. All Rights Reserved.</i>]]></bottom>
+        <tag name="todo" scope="all" description="To do:" />
+        <tag name="see" scope="all" description="See:" />
+      </javadoc>
+    </target>
+</project>

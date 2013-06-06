@@ -1,0 +1,10 @@
+File_menuitem=&Файл
+File_Exit_menuitem=&Выход
+
+Edit_menuitem=&Редактировать
+Cut_menuitem=Вырезать\tCtrl+X
+Copy_menuitem=&Копировать\tCtrl+C
+Paste_menuitem=&Вставить\tCtrl+V
+Font_menuitem=Изменить шрифт...
+
+window_title=Текстовый демонстрационный редактор Colorer Demo

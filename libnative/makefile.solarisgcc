@@ -1,0 +1,29 @@
+#
+# Solaris GNU c++ compiler
+#
+
+TARGET = libnet_sf_colorer.so
+all: $(TARGET)
+
+shared_path=../../colorer/src/shared/
+JAVA_INCLUDE=$(JAVA_HOME)/include/
+JAVA_INCLUDE_MD=$(JAVA_INCLUDE)solaris/
+
+obj_output=objs
+OPTS=-DCOLORER_FEATURE_USE_DL_MALLOC=FALSE -DCOLORER_FEATURE_USE_CHUNK_ALLOC=FALSE
+
+include $(shared_path)makefile.colorer.solarisgcc
+include makefile.core
+
+
+LIBINC = -lc -lm -lstdc++
+LIBFLAGS = -shared -s -Wl,-h,$(TARGET) $(FLAGS)
+
+$(obj_output_slash)net_sf_colorer.$(obj):
+	$(CC) -fPIC -Wp,-I$(shared_path),-I$(unzipdir),-I$(JAVA_INCLUDE),-I$(JAVA_INCLUDE_MD),-w -o $@ -s -O3 -c net_sf_colorer.cpp
+
+$(TARGET): *.cpp *.h $(objs)
+	$(LINK) $(LIBFLAGS) -o $@ $(objs) $(LIBINC)
+
+clean:
+	$(RM) $(objs) $(TARGET)
