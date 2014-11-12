@@ -260,7 +260,7 @@
 <!--    <antcall target="eclipseplugin-native-${target.os}-${target.arch}"/>-->
 
     <mkdir dir='${temp.folder}/${full.name}/colorer'/>
-    <ant dir='../schemes/' antfile='build.xml' target='hrc.jar'>
+    <ant dir='schemes/' antfile='build.xml' target='hrc.jar'>
       <property name='target-dir' value='${temp.folder}/${full.name}/colorer'/>
     </ant>
 
