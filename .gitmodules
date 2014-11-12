@@ -1,3 +1,6 @@
 [submodule "libnative/libs/colorer"]
 	path = libnative/libs/colorer
 	url = https://github.com/colorer/Colorer-library.git
+[submodule "schemes"]
+	path = schemes
+	url = https://github.com/colorer/Colorer-schemes.git
