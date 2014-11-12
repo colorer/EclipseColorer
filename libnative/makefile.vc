@@ -40,7 +40,7 @@ CPPFLAGS_CUSTOM=$(CPPFLAGS_CUSTOM) /D "_WIN64"
 LIBFLAGS=$(LIBFLAGS) /MACHINE:x64
 !endif 
 
-shared_path=../../colorer/src/shared/
+shared_path=libs/colorer/src/shared/
 JAVA_INCLUDE=$(JAVA_HOME)/include/
 JAVA_INCLUDE_MD=$(JAVA_INCLUDE)win32/
 
@@ -54,10 +54,10 @@ LIB_DEBUG =  /incremental:no /NODEFAULTLIB:libc libcmt.lib
 include makefile.core
 
 # ms nmake faults to substitute $(shared_path) here :(
-include ../../colorer/src/shared/makefile.zlib
-include ../../colorer/src/shared/_dependencies.dep
-include ../../colorer/src/shared/makefile.objs
-include ../../colorer/src/shared/makefile.lines
+include libs/colorer/src/shared/makefile.zlib
+include libs/colorer/src/shared/_dependencies.dep
+include libs/colorer/src/shared/makefile.objs
+include libs/colorer/src/shared/makefile.lines
 
 LIBFLAGS = $(objs) $(LIBFLAGS) /MAP /DLL /DYNAMICBASE:NO wininet.lib /nologo
 

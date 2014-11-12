@@ -5,7 +5,7 @@
 TARGET = libnet_sf_colorer.jnilib
 all: $(TARGET)
 
-shared_path=../../colorer/src/shared/
+shared_path=libs/colorer/src/shared/
 JAVA_INCLUDE=/System/Library/Frameworks/JavaVM.framework/Headers
 JAVA_INCLUDE_MD=$(JAVA_INCLUDE)
 
