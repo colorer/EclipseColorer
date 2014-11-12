@@ -257,7 +257,7 @@
     <!-- handle native library -
     <mkdir dir='${eclipseplugin-dir}'/>
     -->
-    <antcall target="eclipseplugin-native-${target.os}-${target.arch}"/>
+<!--    <antcall target="eclipseplugin-native-${target.os}-${target.arch}"/>-->
 
     <mkdir dir='${temp.folder}/${full.name}/colorer'/>
     <ant dir='../schemes/' antfile='build.xml' target='hrc.jar'>
