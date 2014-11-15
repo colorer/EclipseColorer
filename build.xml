@@ -154,6 +154,11 @@
     <delete file="${build-dir}/${full.name}.jar" failonerror='false'/>
     <delete file="${build-dir}/${full.name}.zip" failonerror='false'/>
     <delete dir="${temp.folder}" failonerror='false'/>
+    <exec executable="cmd" dir="schemes">
+      <arg value="/c"/>
+      <arg value="build.cmd"/>
+      <arg value="clean"/>
+    </exec>
   </target>
 
   <target name="refresh" depends="init" if="eclipse.running">
