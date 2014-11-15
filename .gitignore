@@ -1,0 +1,6 @@
+bin
+temp.folder
+EclipseColorer*
+src/main/resources/META-INF/MANIFEST.MF
+src/main/resources/feature.xml
+src/main/resources/site.xml

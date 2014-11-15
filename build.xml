@@ -16,9 +16,10 @@
   <property name="plugin" value="net.sf.colorer"/>
 
   <property name='eclipseplugin-version' value='eclipseplugin-version'/>
-  <property name='release-name' value='EclipseColorer-take5_${eclipseplugin-version}'/>
+  <property name='release-name' value='EclipseColorer_${eclipseplugin-version}'/>
   <property name='build-dir' value='${basedir}/${release-name}'/>
   <property name='release-zip' value='${release-name}.zip'/>
+  <property name='resource-dir' value='src/main/resources'/>
   
   <property name='eclipsedir-name' value='net.sf.colorer_${eclipseplugin-version}'/>
   <property name='eclipseplugin-dir' value='${build-dir}/${eclipsedir-name}'/>
@@ -29,7 +30,7 @@
   <property name="temp.folder" value="${basedir}/temp.folder"/>
   
   <!-- location for colorer.jar and src.zip -->
-  <property name="build.result.folder" value="${basedir}"/>
+  <property name="build.result.folder" value="${basedir}/bin"/>
 
 
   <target name="init" depends="properties">
@@ -50,22 +51,19 @@
   
   <target name="update-version">
     <delete>
-      <fileset dir="." includes="feature.xml, site.xml, META-INF/MANIFEST.MF"/>
+      <fileset dir="${resource-dir}" includes="feature.xml, site.xml, META-INF/MANIFEST.MF"/>
     </delete>
     <filter token="eclipseplugin-version" value="${eclipseplugin-version}"/>
     <filter token="target.os" value="${target.os}"/>
     <filter token="target.arch" value="${target.arch}"/>
-    <copy file='feature.in.xml' tofile='feature.xml' filtering='true'/>
-    <copy file='site.in.xml' tofile='site.xml' filtering='true'/>
-    <copy file='META-INF/MANIFEST.in.MF' tofile='META-INF/MANIFEST.MF' filtering='true'/>
+    <copy file='${resource-dir}/feature.in.xml' tofile='${resource-dir}/feature.xml' filtering='true'/>
+    <copy file='${resource-dir}/site.in.xml' tofile='${resource-dir}/site.xml' filtering='true'/>
+    <copy file='${resource-dir}/META-INF/MANIFEST.in.MF' tofile='${resource-dir}/META-INF/MANIFEST.MF' filtering='true'/>
   </target>
 
   <target name="cleanxx" depends='init'>
     <delete dir='${eclipseplugin-dir}' failonerror='false'/>
     <delete file='${eclipseplugin-zip}' failonerror='false'/>
-    <ant antfile='${basedir}/../colorer/build.xml' target='make.clean'>
-      <param name='make.dir' value='${basedir}/libnative'/>
-    </ant>
   </target>
 
   <target name='eclipse.plugins-check' unless='eclipse.plugins-exists'>
@@ -84,7 +82,6 @@
     </fail>
   </target>
 
-
   <target name="build.update.jar" depends="init" description="Build the plug-in: net.sf.colorer for an update site.">
     <delete dir="${temp.folder}"/>
     <mkdir dir="${temp.folder}"/>
@@ -99,8 +96,8 @@
     <mkdir dir="${destination.temp.folder}/${full.name}"/>
     <copy file="${build.result.folder}/colorer.jar" todir="${destination.temp.folder}/${full.name}"/>
     <copy todir="${destination.temp.folder}/${full.name}">
-      <fileset dir="." includes="META-INF/MANIFEST.MF,plugin.properties,plugin.xml,plugin_ru.prop,plugin_ru.properties,about.ini,welcome.xml"/><!-- toc.xml -->
-      <fileset dir="." includes="icons/**/*.gif"/>
+      <fileset dir="${resource-dir}" includes="META-INF/MANIFEST.MF,plugin.properties,plugin.xml,plugin_ru.prop,plugin_ru.properties,about.ini,welcome.xml"/><!-- toc.xml -->
+      <fileset dir="${resource-dir}" includes="icons/**/*.gif"/>
     </copy>
   </target>
 
@@ -110,11 +107,11 @@
     <mkdir dir="${temp.folder}/colorer.jar.bin"/>
     <!-- compile the source code -->
     <javac destdir="${temp.folder}/colorer.jar.bin" failonerror="${javacFailOnError}" source="1.3" target="1.1" verbose="${javacVerbose}" debug="${javacDebugInfo}" includeAntRuntime="no" bootclasspath="${bootclasspath}" classpathref="classpath">
-      <src path="src/"/>
+      <src path="src/main/java"/>
     </javac>
     <!-- copy necessary resources -->
     <copy todir="${temp.folder}/colorer.jar.bin">
-      <fileset dir="src/" excludes="**/*.java"/>
+      <fileset dir="src/main/java" excludes="**/*.java"/>
     </copy>
     <mkdir dir="${build.result.folder}"/>
     <jar jarfile="${build.result.folder}/colorer.jar" basedir="${temp.folder}/colorer.jar.bin"/>
@@ -163,78 +160,8 @@
     <eclipse.refreshLocal resource="${resourcePath}" depth="infinite"/>
   </target>
 
-  <target name="eclipseplugin-native-win32">
-    <condition property="lib">
-      <available filepath="src/net.sf.colorer/libnative" file="net_sf_colorer.dll"/>
-    </condition>
-    <fail unless='lib'>
-    *********** ERROR! Native part of the Colorer Java library was not compiled
-    </fail>
-    <mkdir dir="${eclipseplugin-dir}/os/win32/x86"/>
-    <copy todir="${eclipseplugin-dir}/os/win32/x86">
-      <fileset dir="src/net.sf.colorer/libnative" includes="net_sf_colorer.dll"/>
-    </copy>
-  </target>
-
-  <target name="eclipseplugin-native-linux-x86">
-    <condition property="lib">
-      <available filepath="src/net.sf.colorer/libnative" file="libnet_sf_colorer.so"/>
-    </condition>
-    <fail unless='lib'>
-    *********** ERROR! Native part of the Colorer Java library was not compiled
-    </fail>
-    <mkdir dir="${eclipseplugin-dir}/os/linux/x86"/>
-    <copy todir="${eclipseplugin-dir}/os/linux/x86">
-      <fileset dir="src/net.sf.colorer/libnative" includes="libnet_sf_colorer.so"/>
-    </copy>
-  </target>
-
-  <target name="eclipseplugin-native-linux-x86_64">
-    <condition property="lib">
-      <available filepath="libnative" file="libnet_sf_colorer.so"/>
-    </condition>
-    <fail unless='lib'>
-    *********** ERROR! Native part of the Colorer Java library was not compiled
-    </fail>
-    <mkdir dir="${temp.folder}/${full.name}/os/linux/x86_64"/>
-    <copy todir="${temp.folder}/${full.name}/os/linux/x86_64">
-      <fileset dir="libnative" includes="libnet_sf_colorer.so"/>
-    </copy>
-  </target>
-
-  <target name="eclipseplugin-native-macos">
-    <condition property="lib">
-      <available filepath="src/net.sf.colorer/libnative" file="libnet_sf_colorer.jnilib"/>
-    </condition>
-    <fail unless='lib'>
-    *********** ERROR! Native part of the Colorer Java library was not compiled
-    </fail>
-    <mkdir dir="${eclipseplugin-dir}/os/macosx/ppc"/>
-    <copy todir="${eclipseplugin-dir}/os/macosx/ppc">
-      <fileset dir="src/net.sf.colorer/libnative" includes="libnet_sf_colorer.jnilib"/>
-    </copy>
-    <mkdir dir="${eclipseplugin-dir}/os/macosx/x86"/>
-    <copy todir="${eclipseplugin-dir}/os/macosx/x86">
-      <fileset dir="src/net.sf.colorer/libnative" includes="libnet_sf_colorer.jnilib"/>
-    </copy>
-
-  </target>
-
-  <target name="eclipseplugin-native-solaris">
-    <condition property="lib">
-      <available filepath="src/net.sf.colorer/libnative" file="libnet_sf_colorer.so"/>
-    </condition>
-    <fail unless='lib'>
-    *********** ERROR! Native part of the Colorer Java library was not compiled
-    </fail>
-    <mkdir dir="${eclipseplugin-dir}/os/solaris"/>
-    <copy todir="${eclipseplugin-dir}/os/solaris">
-      <fileset dir="src/net.sf.colorer/libnative" includes="libnet_sf_colorer.so"/>
-    </copy>
-  </target>
-
-
   <target name="gather" depends="init, update-version" description="Create a directory, containing all the elements for the plug-in: net.sf.colorer.">
+    <antcall target='clean'/>
     <antcall target='eclipse.plugins-check'/>
     <antcall target="build.jars"/>
     <antcall target="build.sources"/>
@@ -257,19 +184,25 @@
     <!-- handle native library -
     <mkdir dir='${eclipseplugin-dir}'/>
     -->
-<!--    <antcall target="eclipseplugin-native-${target.os}-${target.arch}"/>-->
 
     <mkdir dir='${temp.folder}/${full.name}/colorer'/>
-    <ant dir='schemes/' antfile='build.xml' target='hrc.jar'>
-      <property name='target-dir' value='${temp.folder}/${full.name}/colorer'/>
-    </ant>
 
+    <exec executable="cmd" dir="schemes">
+      <arg value="/c"/>
+      <arg value="build.cmd"/>
+      <arg value="base.pack"/>
+    </exec>
+
+    <mkdir dir='${temp.folder}/${full.name}/colorer/hrc'/>
+    <copy todir='${temp.folder}/${full.name}/colorer/hrc'>
+      <fileset dir='schemes/build/basep/hrc' includes='**'/>
+    </copy>
     <mkdir dir='${temp.folder}/${full.name}/colorer/hrd/rgb'/>
     <copy todir='${temp.folder}/${full.name}/colorer/hrd/rgb'>
-      <fileset dir='../colorer/hrd/rgb' includes='**'/>
+      <fileset dir='schemes/build/basep/hrd/rgb' includes='**'/>
     </copy>
     <copy todir='${temp.folder}/${full.name}/colorer/hrd'>
-      <fileset dir='../colorer/hrd' includes='*.xml'/>
+      <fileset dir='schemes/build/basep/hrd' includes='*.xml'/>
     </copy>
     <copy file='distr/catalog.xml' todir='${temp.folder}/${full.name}/colorer'/>
 
@@ -279,7 +212,7 @@
     <mkdir dir='${build-dir}/update/features'/>
     <mkdir dir='${build-dir}/update/plugins'/>
     <zip destfile='${build-dir}/update/features/${full.name}.jar'>
-      <fileset dir='.' includes='feature.xml'/>
+      <fileset dir='${resource-dir}' includes='feature.xml'/>
       <fileset dir='distr' includes='MPL-1.1.html'/>
       <fileset dir='distr' includes='logo-colorer.png'/>
     </zip>
@@ -287,7 +220,7 @@
       <fileset dir='${temp.folder}/${full.name}'/>
     </zip>
     <copy todir='${build-dir}/update'>
-      <fileset dir='.' includes='site.xml'/>
+      <fileset dir='${resource-dir}/' includes='site.xml'/>
     </copy>
     
     <delete>
