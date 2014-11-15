@@ -96,9 +96,10 @@
     <mkdir dir="${destination.temp.folder}/${full.name}"/>
     <copy file="${build.result.folder}/colorer.jar" todir="${destination.temp.folder}/${full.name}"/>
     <copy todir="${destination.temp.folder}/${full.name}">
-      <fileset dir="${resource-dir}" includes="META-INF/MANIFEST.MF,plugin.properties,plugin.xml,plugin_ru.prop,plugin_ru.properties,about.ini,welcome.xml"/><!-- toc.xml -->
+      <fileset dir="${resource-dir}" includes="META-INF/MANIFEST.MF,plugin.properties,plugin.xml,plugin_ru.properties,about.ini,welcome.xml"/><!-- toc.xml -->
       <fileset dir="${resource-dir}" includes="icons/**/*.gif"/>
     </copy>
+    <copy file="distr/logo-colorer.png" todir="${destination.temp.folder}/${full.name}/icons"/>
   </target>
 
   <target name="colorer.jar" depends="init" unless="colorer.jar" description="Create jar: colorer.jar.">
