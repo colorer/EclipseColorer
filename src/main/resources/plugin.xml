@@ -23,7 +23,6 @@
       </editor>
       <editor
             name="%ColorerEditor.scripts"
-            default="true"
             icon="icons/scripts.gif"
             extensions="awk,bat,bbj,dbm,diff,dpk,dpr,ini,patch,pls,pm,prg,pro,project,properties,prop,pro,props,reg,sources,txt,xom,mak,makefile"
             contributorClass="net.sf.colorer.eclipse.editors.ColorerActionContributor"
@@ -32,7 +31,6 @@
       </editor>
       <editor
             name="%ColorerEditor.xml"
-            default="true"
             icon="icons/xml.gif"
             extensions="xml,xsd,xsl,dtd,hrc,hrd,html,htm,xhtml,rhtml,erb,yml,haml,sass,css,asp,aspx,jsp,fo,svg,dbk,docbook,jhtml,jspf,php,php3,php4,phtml,sgm,sgml,shtm,shtml"
             contributorClass="net.sf.colorer.eclipse.editors.ColorerActionContributor"
