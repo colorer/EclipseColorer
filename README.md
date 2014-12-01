@@ -2,8 +2,6 @@
 ========================
 EclipseColorer - is a syntax highlighting plugin for Eclipse
 
-(google translate ..fix me please)
-
 Structure
 ------------------------
 
@@ -12,7 +10,7 @@ The plugin consists of
   * libnative - library in C ++ with the basic functions of text parsing
   * schemes - Colorer schemes
 
-Since libnative specific for each platform on which can be run plugin, its build is performed separately 
+Since libnative is specific for each platform on which this plugin can be run, its build is performed separately 
 for each platform. Ready libraries are added to the folder distr/os and are used in the build plugin.
 
 How to build from source
@@ -35,12 +33,12 @@ or update local git repository
     git pull
     git submodule update --recursive
 
-Set the path to Eclipse in the build.properties file in the variable eclipse.dir
+Set the path to Eclipse in the `build.properties` file in the variable eclipse.dir
 Run build
 
     ant
 
-When errors build schemes required to get acquainted with schemes\README.md.
+When there are build errors for schemes, you need to get acquainted with schemes\README.md.
 
 For libnative build
  
