@@ -5,6 +5,7 @@ import java.util.Enumeration;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.Vector;
+import java.io.File;
 
 import net.sf.colorer.FileType;
 import net.sf.colorer.ParserFactory;
@@ -21,7 +22,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.texteditor.AbstractDecoratedTextEditorPreferenceConstants;
 import org.eclipse.ui.texteditor.ChainedPreferenceStore;
 import org.osgi.framework.BundleContext;
-
+import org.eclipse.core.runtime.FileLocator;
 
 /**
  * The main plugin class to be used in the desktop.
@@ -119,8 +120,8 @@ public class ColorerPlugin extends AbstractUIPlugin {
             return parserFactory;
         }
         try {
-            catalogPath = new URL(Platform.resolve(
-                    getBundle().getEntry("/")), "colorer/catalog.xml").toExternalForm();
+            catalogPath = new File(FileLocator.getBundleFile(getBundle()), "colorer/catalog.xml")
+                .getPath();
             Logger.trace("EclipsecolorerPlugin", "Catalog: "+catalogPath);
             parserFactory = new ParserFactory(catalogPath);
         } catch (Throwable e) {
