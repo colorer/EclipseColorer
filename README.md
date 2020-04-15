@@ -1,6 +1,7 @@
-﻿EclipseColorer
+EclipseColorer
 ========================
 EclipseColorer - is a syntax highlighting plugin for Eclipse
+# No longer supported
 
 Structure
 ------------------------
